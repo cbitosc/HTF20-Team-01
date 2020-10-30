@@ -10,3 +10,16 @@ class Register(models.Model):
     class Meta:
         managed = False
         db_table = 'register'
+
+class Product(models.Model):
+    id=models.IntegerField(primary_key=True)
+    product_name = models.CharField(max_length=50, blank=True, null=True)
+    type = models.CharField(max_length=30, blank=True, null=True)
+    dept = models.CharField(max_length=10, blank=True, null=True)
+    price = models.IntegerField(blank=True, null=True)
+    quantity = models.IntegerField(blank=True, null=True)
+    edition = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'product'

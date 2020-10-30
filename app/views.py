@@ -6,6 +6,7 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.http import HttpResponse
+import json
 
 def home(request):
     return render(request,"index.html")
@@ -84,3 +85,110 @@ def forgetpassword(request):
             return render(request,"forgetpassword.html",{'msg':msg})
 
     return render(request,"forgetpassword.html")
+
+def buy(request):
+    return render(request,"buy.html")
+
+def buybooks(request):
+    cursor3=connection.cursor()
+    try:
+        cursor3.execute(f"""select * from product where type='Books' and quantity>0""",
+        )
+        connection.commit()
+        #row=cursor3.fetchall()
+        results = dictfetchall(cursor3)
+        print(results)
+        return render(request,"buybooks.html",{'products':results})
+    except Exception as e:
+        print(e)
+        msg="No Products Available Under this Section"
+        return render(request,"buybooks.html",{'msg':msg})
+    return render(request,"buy.html",{'msg':msg})
+
+def buycalculator(request):
+    cursor4=connection.cursor()
+    try:
+        cursor4.execute(f"""select * from product where type='Calculator' and quantity>0""",
+        )
+        connection.commit()
+        #row=cursor3.fetchall()
+        results = dictfetchall(cursor4)
+        print(results)
+        return render(request,"buycalculator.html",{'products':results})
+    except Exception as e:
+        print(e)
+        msg="No Products Available Under this Section"
+        return render(request,"buycalculator.html",{'msg':msg})
+    return render(request,"buy.html",{'msg':msg})
+
+def buydrafters(request):
+    cursor5=connection.cursor()
+    try:
+        cursor5.execute(f"""select * from product where type='Drafter' and quantity>0""",
+        )
+        connection.commit()
+        #row=cursor3.fetchall()
+        results = dictfetchall(cursor5)
+        print(results)
+        return render(request,"buydrafter.html",{'products':results})
+    except Exception as e:
+        print(e)
+        msg="No Products Available Under this Section"
+        return render(request,"buydrafter.html",{'msg':msg})
+    return render(request,"buy.html",{'msg':msg})
+
+
+def convertToBinaryData(filename):
+    # Convert digital data to binary format
+    with open(filename, 'rb') as file:
+        binaryData = file.read()
+    return binaryData
+
+def insertBLOB(id, name, photo):
+    try:
+        cursor = connection.cursor()
+        sql_insert_blob_query = """ INSERT INTO product
+                          (name, photo) VALUES (%s,%s)"""
+
+        empPicture = convertToBinaryData(photo)
+
+        # Convert data into tuple format
+        insert_blob_tuple = (name, empPicture)
+        result = cursor.execute(sql_insert_blob_query, insert_blob_tuple)
+        connection.commit()
+        print("Image and file inserted successfully as a BLOB into python_employee table", result)
+
+    except:
+        print("Failed inserting BLOB data into MySQL table {}")
+
+    finally:
+        if (connection.is_connected()):
+            cursor.close()
+            connection.close()
+            print("MySQL connection is closed")
+
+def sell(request):
+    if request.method=='POST':
+        cursor6=connection.cursor()
+        productname=request.POST.get('name')
+        Type=request.POST.get('Type')
+        price=int(request.POST.get('Price'))
+        edition=request.POST.get('edition')
+        image=request.POST.get('image')
+        print(image)
+
+        try:
+            cursor6.execute('INSERT INTO product VALUES(%s, %s, %s , %s)',
+            (productname,Type,price,edition))
+            connection.commit()
+
+            subject="Congratulations you have created an account succesfully"
+           
+            return render(request,"sell.html",{'msg':msg})
+        except Exception as e:
+            print(type(e),e)
+            msg="Account already exists"
+            return render(request,"sell.html",{'msg':msg})
+        finally:
+            cursor6.close()
+    return render(request,"sell.html")

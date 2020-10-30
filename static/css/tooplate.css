@@ -593,3 +593,12 @@ input[type="email"]:not(.browser-default).tm-input-white-bg {
     margin-top: 80px;
   }
 }
+
+  #buybg{
+  background-image: url(../img/img1.jpg);
+  background-size: cover;
+	background-repeat: no-repeat;
+}
+#products{
+  margin:200px 100px 100px 350px;
+}
