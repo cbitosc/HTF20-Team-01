@@ -174,7 +174,7 @@ def sell(request):
         Type=request.POST.get('Type')
         price=int(request.POST.get('Price'))
         edition=request.POST.get('edition')
-        image=request.POST.get('image')
+        image=request.files('image')
         print(image)
 
         try:
