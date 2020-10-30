@@ -18,6 +18,32 @@ body {
   background-color: #000;
 }
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+
+
 .tm-site-title {
   font-size: 4rem;
   text-align: center;
@@ -144,6 +170,15 @@ ul.tm-home-list:not(.browser-default) {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+#loggedIn {
+
+  background-image: url(../img/loggedin.jpg);
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+
 }
 
 #register .container {

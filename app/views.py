@@ -9,6 +9,8 @@ from django.http import HttpResponse
 
 def home(request):
     return render(request,"index.html")
+
+
 def dictfetchall(cursor):
     "Return all rows from a cursor as a dict"
     columns = [col[0] for col in cursor.description]
@@ -55,7 +57,7 @@ def login(request):
             connection.commit()
             msg="Logged in Succesfully"
             user=dictfetchall(cursor1)
-            return render(request,"login.html",{'msg':msg})
+            return render(request,"home.html",{'msg':msg})
         except:
             msg="Fail"
             return render(request,"login.html",{'msg':msg})
