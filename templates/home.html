@@ -1,41 +1,42 @@
 {% load static %}
-        <p>{{query}}</p>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Stationary</title>
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/tooplate.css'%}">
+    <link rel="stylesheet" href="{% static 'css/tooplate.css' %}">
+    <title>Logged in</title>
+    
 </head>
 
-<body id="home">
+<body id="buybg" >
+    
+    
     <div class="container tm-home-mt tm-home-container">
         <div class="row">
             <div class="col-12">
                 <div class="tm-home-left">
-                    <h1 class="tm-site-title">CBIT Stationary</h1>
+                    <h1 class="tm-site-title" style="color:black">CBIT Stationary</h1>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                 <div class="tm-home-left mt-3 font-weight-light">
-              <p>Sell or Buy used products</p>
+              <p style="color:black">Sell or Buy used products</p>
                 </div>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                 <ul class="list-group tm-home-list tm-bg-black font-weight-light">
                     <li class="d-flex justify-content-between align-items-center">
-                        <a href="{% url 'register' %}" class="tm-white-text">Register</a>
+                        <a href="{% url 'buy' %}" class="tm-white-text">Buy now</a>
                     </li>
                     <li class="d-flex justify-content-between align-items-center">
-                        <a href="{% url 'login' %}" class="tm-white-text">Login</a>
+                        <a href="{% url 'sell' %}" class="tm-white-text">Sell</a>
                     </li>
                 </ul>
             </div>
@@ -43,5 +44,4 @@
     </div>
     
 </body>
-
 </html>

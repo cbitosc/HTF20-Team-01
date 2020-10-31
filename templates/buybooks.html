@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
     <title>Stationary</title>
     <style>
         .card {
@@ -198,13 +200,15 @@
                     margin-bottom: 10px;
             
                 }
+                
           
          
     </style>
 </head>
-<body>
+<body id="buybg">
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
+          
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar">
                     <span class="icon-bar"></span>
@@ -215,14 +219,15 @@
             </div>
             <div class="collapse navbar-collapse" id="mynavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="cart.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-                    <li><a href="index.html"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    <li><a href="{% url 'cart' %}"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                    <li><a href="{% url 'home' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                 </ul>
             </div>
         </div>
         
     </nav>
-    <div class="container">
+    <div style='margin-top:100px' class="container">
+      <center> <h1>Available books</h1></center>
     <div class="row">
     {% for i in products %}
    <!-- <div class="accordion" id="dashboard">
@@ -254,16 +259,22 @@
        
         <div class="col-sm-4">
           <div class="card" style="width: 40rem;">
-            <img class="card-img-top" src="{%static 'img/books.jpg'%}" alt="Card image cap">
+            <img class="card-img-top" src="{% static 'img/books.jpg' %}" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">{{i.product_name}}</h5>
               <p class="card-text"><li>Price : {{i.price}}</li>
                 <li>quantity : {{i.quantity}}</li></p>
-              <a class="btn btn-primary btn-lg">Add to cart</a>
+                <form method="GET" action="{% url 'addtocart'%}">
+              
+                  <input type="hidden" value={{i.id}} name="id">
+                  <input type="number" name="quantity">
+                <button type=submit class="btn btn-primary">Add to cart</button> 
+            </form>
             </div>
           </div>
           </div>
-           
+      
+          
         
 
             
