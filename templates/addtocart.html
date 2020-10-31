@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+    <script src="https://kit.fontawesome.com/f8ec40fafa.js" crossorigin="anonymous"></script>
+    <title>Stationary</title>
+</head>
+<body>
+    <div style="margin-top:100px" class="container">   
+        <h1>Cart</h1> 
+        <table class="table">
+        <thead>
+          <tr>
+            
+            <th scope="col">Sno</th>
+            <th scope="col">Product name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for i in results %}
+          <tr>
+           
+            <td>{{i.id}}</td>
+            <td>{{i.product_name}}</td>
+            <td>{{i.qty}}</td>
+            <td>{{i.qty}}*{{i.price}} <a href=#><i class="fa fa-times"></i></a></td>
+          </tr>
+          
+        {% endfor %}   
+        <tr>
+            <td></td>
+            <td></td>
+            <td><button type="submit" class="btn btn-primary">Submit</button></td>
+            <td>{{total}}</td>
+          </tr> 
+        </tbody>
+      </table>
+    </div>
+
+</body>
+</html>

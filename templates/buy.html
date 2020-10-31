@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stationary</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+   
+    <link rel="stylesheet" href="{% static 'css/tooplate.css' %}">
+</head>
+<body id="buybg">
+
+    <div id="products"> 
+    <div  class="row text-center">
+        <div class="col-md-3 col-sm-6">
+            <div class="thumbnail">
+                   <a href="{% url 'buybooks' %}"> <img src="{% static 'img/books1.jpg'%}" alt="book" width="400px" height="400px"></a>
+                    <div class="caption">
+                        <h3>Books</h3>
+                       
+                    </div>
+                </div> 
+        </div>
+           
+        <div class="col-md-3 col-sm-6">        
+            <div class="thumbnail">
+                    <a href="{% url 'buycalculator' %}"><img class="cal" src="{% static 'img/calculator.jpg'%}" alt="" width="400px" height="400px"></a>
+                    <div class="caption">
+                        <h3>Calculators</h3>
+                        
+                    </div>
+                </div> 
+        </div>
+        <div class="col-md-3 col-sm-6">        
+            <div class="thumbnail">
+            <a href="{% url 'buydrafter' %}"> <img src="{% static 'img/drafter.jpg'%}" alt=""></a>
+                    <div class="caption">
+                        <h3>Drafters</h3>
+                        
+                    </div>
+                </div> 
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Logged in</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tooplate.css' %}">
+</head>
+<body id="buybg" >
+      <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6  mx-auto">
+                <header class="mt-5 mb-5 black-text text-center">
+                    <b>{{msg}}</b>
+
+                    <h3>Upload</h3>
+                    <p class="tm-form-description"></p>
+                </header>
+                <form action="{% url 'sell' %}" method="post" enctype="multipart/form-data" class="tm-form-white tm-font-big">
+
+                  {% csrf_token %}
+                    <div class="tm-bg-black tm-form-pad-big">
+                        <div class="form-group mb-5">
+                            <label for="name" class="white-text mb-4 big">Name of the product</label>
+                            <input id="name_product" name="name" type="text" class="validate tm-input-white-bg">
+                        </div>
+                        <div class="form-group mb-5">
+                            <label for="Type" class="white-text mb-4 big">Type</label>
+                            <input id="Type" name="Type" type="text" class="validate tm-input-white-bg">
+                        </div>
+                        <div class="form-group mb-5">
+                            <label for="Price" class="white-text mb-4 big">Price</label>
+                            <input id="Price" name="Price" type="text" class="validate tm-input-white-bg">
+                        </div>
+                        <div class="form-group mb-5">
+                            <label for="description" class="white-text mb-4 big">Edition</label>
+                            <input id="description" name="edition" type="text" class="validate tm-input-white-bg">
+                        </div>
+                        <div class="form-group mb-5">
+                            <label for="image" class="white-text mb-4 big">Image</label>
+                            <input id="image" name="image" type="file" class="">
+                        </div>
+                    </div>
+                    <div class="text-center mt-5">
+                        <button type="submit" class="waves-effect btn-large btn-large-white">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+        <script src="{% static 'js/jquery-3.2.1.slim.min.js' %}"></script>
+        <script src="{% static 'js/materialize.min.js' %}"></script>
+        <script>
+        $(document).ready(function () {
+            $('select').formSelect();
+        });
+    </script>
+    
+</body>
+</html>
